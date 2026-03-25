@@ -1,0 +1,27 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:unified="sap.ui.unified">
+
+    <Dialog id="uploadExcel" title="Upload Excel" draggable="true" resizable="true">
+        
+        <VBox id="veriticalBox">
+            <items>
+                <unified:FileUploader
+                    id="fileUploader"
+                    width="100%"
+                    fileType="xlsx,xls"
+                    change=".onFileChange" />
+            </items>
+        </VBox>
+
+        <beginButton>
+            <Button id="upload" text="Upload" press=".onUploadExcel"/>
+        </beginButton>
+
+        <endButton>
+            <Button id="cancel" text="Cancel" press=".onCloseDialog"/>
+        </endButton>
+
+    </Dialog>
+</core:FragmentDefinition>

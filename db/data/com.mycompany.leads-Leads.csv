@@ -1,0 +1,36 @@
+ID,name,leadType,leadCategory,sourceOfLead,prospectType,salesAdvisor,status,createdAt,createdBy,modifiedAt,modifiedBy
+d1a2b3c4-e89b-4d3a-a456-426614174001,Arabian Attieh for Steel Co,Organization,Warm,Agent,Client,Prasanth Sundhar,Completed,2025-11-07T08:00:00Z,gopi.a@company.com,2026-02-09T10:30:00Z,gopi.a@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174002,AMG LLC,Organization,Hot,Website,Partner,Ravi Kumar,New,2025-11-07T08:15:00Z,gopi.a@company.com,2025-11-07T08:15:00Z,gopi.a@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174003,Java Ocean Shipping PT,Organization,Cold,Advertisement,Investor,Anitha Raj,InProcess,2025-11-06T09:00:00Z,gopi.a@company.com,2025-12-01T11:00:00Z,anitha.raj@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174004,Tech Innovators Pvt Ltd,Organization,Hot,Agent,Client,Prasanth Sundhar,Active,2025-11-06T09:30:00Z,gopi.a@company.com,2026-01-10T14:00:00Z,prasanth.s@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174005,John Michael,Person,Warm,Friends,Partner,Gopi A,Completed,2025-11-04T10:00:00Z,gopi.a@company.com,2025-12-15T09:00:00Z,gopi.a@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174006,Sarah Connor,Person,Hot,Website,Client,Ravi Kumar,New,2025-11-04T10:30:00Z,ravi.kumar@company.com,2025-11-04T10:30:00Z,ravi.kumar@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174007,Blue Horizon Ventures,Organization,Cold,Advertisement,Vendor,Anitha Raj,Inactive,2025-11-04T11:00:00Z,gopi.a@company.com,2026-01-20T16:00:00Z,anitha.raj@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174008,NextGen Solutions,Organization,Warm,Agent,Investor,Gopi A,InProcess,2025-11-04T11:30:00Z,gopi.a@company.com,2025-12-10T13:00:00Z,gopi.a@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174009,Emily Watson,Person,Hot,Friends,Client,Prasanth Sundhar,Active,2025-11-03T08:00:00Z,prasanth.s@company.com,2026-02-01T10:00:00Z,prasanth.s@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174010,Global Trade Partners,Organization,Hot,Website,Partner,Ravi Kumar,Completed,2025-11-03T08:30:00Z,ravi.kumar@company.com,2025-12-20T15:00:00Z,ravi.kumar@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174011,Infotech Global Pvt Ltd,Organization,Warm,Website,Client,Ravi Kumar,New,2025-10-30T08:00:00Z,gopi.a@company.com,2025-10-30T08:00:00Z,gopi.a@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174012,Alpha Industrial Group,Organization,Hot,Agent,Partner,Prasanth Sundhar,Active,2025-10-29T09:00:00Z,gopi.a@company.com,2025-12-10T10:00:00Z,prasanth.s@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174013,AsiaTech Manufacturing,Organization,Warm,Advertisement,Client,Anitha Raj,InProcess,2025-10-28T09:30:00Z,gopi.a@company.com,2025-12-15T12:00:00Z,anitha.raj@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174014,PetroLine Middle East,Organization,Hot,Website,Vendor,Ravi Kumar,Active,2025-10-27T10:00:00Z,ravi.kumar@company.com,2026-01-05T09:00:00Z,ravi.kumar@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174015,Dragon Logistics Ltd,Organization,Cold,Advertisement,Partner,Anitha Raj,Inactive,2025-10-26T11:00:00Z,gopi.a@company.com,2025-11-20T10:00:00Z,anitha.raj@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174016,Carlos Mendez,Person,Warm,Friends,Client,Gopi A,Completed,2025-10-25T08:00:00Z,gopi.a@company.com,2025-11-15T10:00:00Z,gopi.a@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174017,Desert Energy Corp,Organization,Hot,Agent,Investor,Ravi Kumar,Active,2025-10-24T09:00:00Z,ravi.kumar@company.com,2026-02-01T12:00:00Z,ravi.kumar@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174018,SkyTech Digital,Organization,Warm,Website,Client,Prasanth Sundhar,InProcess,2025-10-23T10:00:00Z,prasanth.s@company.com,2025-12-22T10:00:00Z,prasanth.s@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174019,Venture Labs,Organization,Cold,Advertisement,Vendor,Anitha Raj,Inactive,2025-10-22T10:30:00Z,gopi.a@company.com,2025-11-25T10:00:00Z,anitha.raj@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174020,SmartAI Solutions,Organization,Hot,Website,Client,Gopi A,New,2025-10-21T11:00:00Z,gopi.a@company.com,2025-10-21T11:00:00Z,gopi.a@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174021,FutureTech Systems,Organization,Hot,Website,Client,Ravi Kumar,New,2025-10-20T09:00:00Z,gopi.a@company.com,2025-10-20T09:00:00Z,gopi.a@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174022,Global Manufacturing Inc,Organization,Warm,Agent,Partner,Prasanth Sundhar,Active,2025-10-19T09:30:00Z,gopi.a@company.com,2025-12-01T09:00:00Z,prasanth.s@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174023,Pacific Trade Hub,Organization,Cold,Advertisement,Vendor,Anitha Raj,Inactive,2025-10-18T10:00:00Z,gopi.a@company.com,2025-11-18T09:00:00Z,anitha.raj@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174024,Daniel Cooper,Person,Warm,Friends,Client,Gopi A,Completed,2025-10-17T08:30:00Z,gopi.a@company.com,2025-11-10T10:00:00Z,gopi.a@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174025,Green Energy Solutions,Organization,Hot,Website,Investor,Ravi Kumar,Active,2025-10-16T09:15:00Z,ravi.kumar@company.com,2026-01-10T12:00:00Z,ravi.kumar@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174026,Arctic Logistics,Organization,Cold,Advertisement,Partner,Anitha Raj,Inactive,2025-10-15T10:00:00Z,gopi.a@company.com,2025-11-20T09:00:00Z,anitha.raj@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174027,SmartWare Technologies,Organization,Warm,Agent,Client,Prasanth Sundhar,InProcess,2025-10-14T09:00:00Z,prasanth.s@company.com,2025-12-05T11:00:00Z,prasanth.s@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174028,Michael Stone,Person,Hot,Friends,Client,Gopi A,Completed,2025-10-13T08:45:00Z,gopi.a@company.com,2025-11-12T09:00:00Z,gopi.a@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174029,Zenith Construction Ltd,Organization,Warm,Website,Partner,Ravi Kumar,Active,2025-10-12T09:30:00Z,ravi.kumar@company.com,2025-12-10T10:00:00Z,ravi.kumar@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174030,CloudMatrix AI,Organization,Hot,Agent,Investor,Prasanth Sundhar,New,2025-10-11T10:00:00Z,gopi.a@company.com,2025-10-11T10:00:00Z,gopi.a@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174031,Vertex Robotics,Organization,Warm,Website,Client,Ravi Kumar,Active,2025-10-10T09:00:00Z,gopi.a@company.com,2025-11-20T09:00:00Z,gopi.a@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174032,NextWave Electronics,Organization,Hot,Agent,Partner,Prasanth Sundhar,New,2025-10-09T09:00:00Z,gopi.a@company.com,2025-10-09T09:00:00Z,gopi.a@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174033,Omega Shipping Ltd,Organization,Cold,Advertisement,Vendor,Anitha Raj,Inactive,2025-10-08T09:00:00Z,gopi.a@company.com,2025-11-01T09:00:00Z,anitha.raj@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174034,David Peterson,Person,Warm,Friends,Client,Gopi A,Completed,2025-10-07T08:00:00Z,gopi.a@company.com,2025-11-01T09:00:00Z,gopi.a@company.com
+d1a2b3c4-e89b-4d3a-a456-426614174035,Quantum AI Labs,Organization,Hot,Website,Investor,Ravi Kumar,Active,2025-10-06T09:00:00Z,ravi.kumar@company.com,2025-12-15T09:00:00Z,ravi.kumar@company.com

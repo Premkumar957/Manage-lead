@@ -1,0 +1,6 @@
+ID,accountType,activityType,customer,startDate,dueDate,priority,salesAdvisor,status,createdAt,createdBy,modifiedAt,modifiedBy
+7f3d2a1b-4c5e-4f6a-8b9c-1d2e3f4a5b6c,Enterprise,Call,John Smith,2024-01-15,2024-01-20,High,Alice Johnson,Open,2024-01-10T09:00:00Z,admin,2024-01-10T09:00:00Z,admin
+9a8b7c6d-5e4f-4a3b-2c1d-0e9f8a7b6c5d,SMB,Meeting,Sarah Connor,2024-01-16,2024-01-25,Medium,Bob Williams,InProgress,2024-01-11T10:00:00Z,admin,2024-01-12T08:00:00Z,admin
+2c3d4e5f-6a7b-4c8d-9e0f-1a2b3c4d5e6f,Startup,Email,Michael Brown,2024-01-18,2024-01-28,Low,Carol Davis,Closed,2024-01-12T11:00:00Z,admin,2024-01-15T14:00:00Z,admin
+b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d5e,Enterprise,Demo,Emily Davis,2024-01-20,2024-02-01,High,David Lee,Open,2024-01-13T08:30:00Z,admin,2024-01-13T08:30:00Z,admin
+e6f7a8b9-c0d1-4e2f-3a4b-5c6d7e8f9a0b,SMB,FollowUp,Robert Wilson,2024-01-22,2024-02-05,Medium,Alice Johnson,InProgress,2024-01-14T09:00:00Z,admin,2024-01-16T10:00:00Z,admin

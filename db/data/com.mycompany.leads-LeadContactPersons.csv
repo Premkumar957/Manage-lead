@@ -1,0 +1,18 @@
+ID,lead_ID,firstName,lastName,email,phone,isPrimary,createdAt,createdBy,modifiedAt,modifiedBy
+c2000001-0000-0000-0000-000000000001,d1a2b3c4-e89b-4d3a-a456-426614174001,Khalid,Attieh,khalid.attieh@steelco.com,+966501234567,true,2025-11-07T08:00:00Z,gopi.a@company.com,2025-11-07T08:00:00Z,gopi.a@company.com
+c2000001-0000-0000-0000-000000000002,d1a2b3c4-e89b-4d3a-a456-426614174001,Layla,Hassan,layla.hassan@steelco.com,+966507654321,false,2025-11-07T08:05:00Z,gopi.a@company.com,2025-11-07T08:05:00Z,gopi.a@company.com
+c2000001-0000-0000-0000-000000000003,d1a2b3c4-e89b-4d3a-a456-426614174002,Ahmed,Al Mansoori,ahmed.m@amgllc.com,+971501112233,true,2025-11-07T08:15:00Z,gopi.a@company.com,2025-11-07T08:15:00Z,gopi.a@company.com
+c2000001-0000-0000-0000-000000000004,d1a2b3c4-e89b-4d3a-a456-426614174003,David,Tan,david.tan@javaocean.com,+6281234567890,true,2025-11-06T09:00:00Z,gopi.a@company.com,2025-11-06T09:00:00Z,gopi.a@company.com
+c2000001-0000-0000-0000-000000000005,d1a2b3c4-e89b-4d3a-a456-426614174004,Priya,Sharma,priya.sharma@techinno.com,+919876543210,true,2025-11-06T09:30:00Z,gopi.a@company.com,2025-11-06T09:30:00Z,gopi.a@company.com
+c2000001-0000-0000-0000-000000000006,d1a2b3c4-e89b-4d3a-a456-426614174004,Arjun,Mehta,arjun.mehta@techinno.com,+919876501234,false,2025-11-06T09:35:00Z,gopi.a@company.com,2025-11-06T09:35:00Z,gopi.a@company.com
+c2000001-0000-0000-0000-000000000007,d1a2b3c4-e89b-4d3a-a456-426614174005,John,Michael,john.michael@gmail.com,+14151234567,true,2025-11-04T10:00:00Z,gopi.a@company.com,2025-11-04T10:00:00Z,gopi.a@company.com
+c2000001-0000-0000-0000-000000000008,d1a2b3c4-e89b-4d3a-a456-426614174006,Sarah,Connor,sarah.connor@gmail.com,+14159876543,true,2025-11-04T10:30:00Z,ravi.kumar@company.com,2025-11-04T10:30:00Z,ravi.kumar@company.com
+c2000001-0000-0000-0000-000000000009,d1a2b3c4-e89b-4d3a-a456-426614174007,Mark,Stevenson,mark.s@bluehorizon.com,+12125550101,true,2025-11-04T11:00:00Z,gopi.a@company.com,2025-11-04T11:00:00Z,gopi.a@company.com
+c2000001-0000-0000-0000-000000000010,d1a2b3c4-e89b-4d3a-a456-426614174008,Nina,Patel,nina.patel@nextgen.com,+919988776655,true,2025-11-04T11:30:00Z,gopi.a@company.com,2025-11-04T11:30:00Z,gopi.a@company.com
+c2000001-0000-0000-0000-000000000011,d1a2b3c4-e89b-4d3a-a456-426614174009,Emily,Watson,emily.watson@gmail.com,+16505550199,true,2025-11-03T08:00:00Z,prasanth.s@company.com,2025-11-03T08:00:00Z,prasanth.s@company.com
+c2000001-0000-0000-0000-000000000012,d1a2b3c4-e89b-4d3a-a456-426614174010,Robert,Chang,robert.chang@globaltrade.com,+85291234567,true,2025-11-03T08:30:00Z,ravi.kumar@company.com,2025-11-03T08:30:00Z,ravi.kumar@company.com
+c2000001-0000-0000-0000-000000000013,d1a2b3c4-e89b-4d3a-a456-426614174011,Rahul,Verma,rahul.verma@infotech.com,+919812345678,true,2025-10-30T08:00:00Z,gopi.a@company.com,2025-10-30T08:00:00Z,gopi.a@company.com
+c2000001-0000-0000-0000-000000000014,d1a2b3c4-e89b-4d3a-a456-426614174011,Anita,Rao,anita.rao@infotech.com,+919811112222,false,2025-10-30T08:05:00Z,gopi.a@company.com,2025-10-30T08:05:00Z,gopi.a@company.com
+c2000001-0000-0000-0000-000000000015,d1a2b3c4-e89b-4d3a-a456-426614174012,Michael,Brown,michael.brown@alphagroup.com,+12025550110,true,2025-10-29T09:00:00Z,gopi.a@company.com,2025-10-29T09:00:00Z,gopi.a@company.com
+c2000001-0000-0000-0000-000000000016,d1a2b3c4-e89b-4d3a-a456-426614174013,Sophia,Lee,sophia.lee@asiatech.com,+6581234567,true,2025-10-28T09:30:00Z,gopi.a@company.com,2025-10-28T09:30:00Z,gopi.a@company.com
+c2000001-0000-0000-0000-000000000017,d1a2b3c4-e89b-4d3a-a456-426614174014,Ali,Reza,ali.reza@petroline.com,+971502223344,true,2025-10-27T10:00:00Z,ravi.kumar@company.com,2025-10-27T10:00:00Z,ravi.kumar@company.com

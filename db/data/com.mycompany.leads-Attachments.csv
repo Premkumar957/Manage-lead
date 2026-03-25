@@ -1,0 +1,6 @@
+ID,activity_ID,fileName,fileType,uploadedBy,uploadedAt
+6a7b8c9d-0e1f-4a2b-3c4d-5e6f7a8b9c0d,7f3d2a1b-4c5e-4f6a-8b9c-1d2e3f4a5b6c,call_notes_johnsmith.pdf,application/pdf,Alice Johnson,2024-01-15T12:00:00Z
+1f2a3b4c-5d6e-4f7a-8b9c-0d1e2f3a4b5c,9a8b7c6d-5e4f-4a3b-2c1d-0e9f8a7b6c5d,meeting_agenda.docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document,Bob Williams,2024-01-16T16:00:00Z
+b5c6d7e8-f9a0-4b1c-2d3e-4f5a6b7c8d9e,2c3d4e5f-6a7b-4c8d-9e0f-1a2b3c4d5e6f,email_draft.txt,text/plain,Carol Davis,2024-01-18T10:00:00Z
+4e5f6a7b-8c9d-4e0f-1a2b-3c4d5e6f7a8b,b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d5e,product_demo_slides.pptx,application/vnd.openxmlformats-officedocument.presentationml.presentation,David Lee,2024-01-20T13:00:00Z
+9c0d1e2f-3a4b-4c5d-6e7f-8a9b0c1d2e3f,e6f7a8b9-c0d1-4e2f-3a4b-5c6d7e8f9a0b,followup_proposal.pdf,application/pdf,Alice Johnson,2024-01-22T16:30:00Z

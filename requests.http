@@ -1,0 +1,41 @@
+###  POST uploadExcel call
+POST http://localhost:8080/odata/v4/LeadService/uploadExcel
+
+
+
+### Create a Lead
+POST http://localhost:8080/odata/v4/LeadService/Leads
+Content-Type: application/json
+
+{
+    "name": "Izack Ark",
+    "leadType": "Person",
+    "leadCategory": "Warm",
+    "sourceOfLead": "Agent",
+    "prospectType": "Client",
+    "salesAdvisor": "Gather",
+    "status": "InProcess"
+}
+
+
+### Read a ALL Leads
+GET http://localhost:8080/odata/v4/LeadService/Leads 
+
+
+### Read a specific Lead
+GET http://localhost:8080/odata/v4/LeadService/Leads(ID=03915ae2-1171-4ca4-8339-a5dc6695c027)
+
+### Read a metadata
+GET http://localhost:8080/odata/v4/LeadService/$metadata
+
+###
+GET http://localhost:8080/odata/v4/LeadService/Leads?$filter=ID eq 03915ae2-1171-4ca4-8339-a5dc6695c027
+
+
+### Update a same record 
+PATCH http://localhost:8080/odata/v4/LeadService/Leads(ID=03915ae2-1171-4ca4-8339-a5dc6695c027,IsActiveEntity=true)
+Content-Type: application/json
+
+{
+    "salesAdvisor": "Gather"
+}

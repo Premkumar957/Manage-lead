@@ -1,0 +1,6 @@
+ID,activity_ID,startDate,dueDate,duration,meetingLocation
+a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d,7f3d2a1b-4c5e-4f6a-8b9c-1d2e3f4a5b6c,2024-01-15T10:00:00Z,2024-01-15T11:00:00Z,60,Conference Room A
+f0e9d8c7-b6a5-4f4e-3d2c-1b0a9f8e7d6c,9a8b7c6d-5e4f-4a3b-2c1d-0e9f8a7b6c5d,2024-01-16T14:00:00Z,2024-01-16T15:30:00Z,90,Client Office - NYC
+3e4f5a6b-7c8d-4e9f-0a1b-2c3d4e5f6a7b,2c3d4e5f-6a7b-4c8d-9e0f-1a2b3c4d5e6f,2024-01-18T09:00:00Z,2024-01-18T09:30:00Z,30,Virtual - Zoom
+8d9e0f1a-2b3c-4d5e-6f7a-8b9c0d1e2f3a,b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d5e,2024-01-20T11:00:00Z,2024-01-20T12:00:00Z,60,Demo Lab Room 3
+c4d5e6f7-a8b9-4c0d-1e2f-3a4b5c6d7e8f,e6f7a8b9-c0d1-4e2f-3a4b-5c6d7e8f9a0b,2024-01-22T15:00:00Z,2024-01-22T15:45:00Z,45,Virtual - Teams
