@@ -5,13 +5,37 @@
   "license": "ISC",
   "repository": "<Add your repository here>",
   "devDependencies": {
-    "@sap/cds-dk": "^9.5.0"
+    "@sap/cds-dk": "^9.5.0",
+    "rimraf": "^5.0.5",
+    "mbt": "^1.2.29"
   },
   "sapux": [
     "app/lead",
     "app/leads",
     "app/lead-management",
     "app/salesoffer",
-    "app/activities"
-  ]
+    "app/activities",
+    "app/customers",
+    "app/customers"
+  ],
+  "scripts": {
+    "undeploy": "cf undeploy manage-lead --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+  },
+  "cds": {
+  "requires": {
+    "API_BUSINESS_PARTNER": {
+      "kind": "odata-v2",
+      "model": "srv/external/API_BUSINESS_PARTNER",
+      "credentials": {
+        "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER",
+        "headers": {
+          "APIKey": "PyEKIqtO6jMczj1yyn3xctK2QETvlqGn",
+          "sap-client": "100"
+        }
+      }
+    }
+  }
+}
 }

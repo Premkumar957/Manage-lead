@@ -1,31 +1,76 @@
 _schema-version: 3.3.0
 ID: manage-lead
+description: A simple CAP project.
 version: 1.0.0-SNAPSHOT
-description: "A simple CAP project."
-parameters:
-  enable-parallel-deployments: true
 modules:
-  - name: manage-lead-srv
-    type: java
-    path: srv
-    parameters:
-      instances: 1
-      buildpack: sap_java_buildpack_jakarta
+- name: manage-lead-srv
+  type: java
+  path: srv
+  properties:
+    JBP_CONFIG_COMPONENTS: 'jres: [''com.sap.xs.java.buildpack.jre.SAPMachineJRE'']'
+    JBP_CONFIG_SAP_MACHINE_JRE: '{ version: 21.+ }'
+    SPRING_PROFILES_ACTIVE: cloud,sandbox
+  provides:
+  - name: srv-api
     properties:
-      SPRING_PROFILES_ACTIVE: cloud,sandbox
-      JBP_CONFIG_COMPONENTS: "jres: ['com.sap.xs.java.buildpack.jre.SAPMachineJRE']"
-      JBP_CONFIG_SAP_MACHINE_JRE: '{ version: 21.+ }'
-    build-parameters:
-      builder: custom
-      commands:
-        - mvn clean package -DskipTests=true --batch-mode
-      build-result: target/*-exec.jar
-    provides:
-      - name: srv-api # required by consumers of CAP services (e.g. approuter)
-        properties:
-          srv-url: ${default-url}
+      srv-url: ${default-url}
+  parameters:
+    buildpack: sap_java_buildpack_jakarta
+    instances: 1
+  build-parameters:
+    build-result: target/*-exec.jar
+    builder: custom
+    commands:
+    - mvn clean package -DskipTests=true --batch-mode
+- name: manage-lead-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: manage-lead-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
     requires:
-      []
-
+    - artifacts:
+      - comnorthwindcustomers.zip
+      name: comnorthwindcustomers
+      target-path: resources/
+- name: comnorthwindcustomers
+  type: html5
+  path: app/customers
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
 resources:
-  []
+- name: manage-lead-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: manage-lead-html5-service
+    service-plan: app-host
+- name: manage-lead-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: false
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: manage-lead-destination-service
+    service-plan: lite
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true

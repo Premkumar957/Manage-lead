@@ -53,12 +53,12 @@ type ActivityStatus : String @assert.range enum {
 // ── ENTITIES ──
 
 entity Leads : cuid, managed {
-    name         : String(100)  @title: 'Name';
+    name         : String(100)  @mandatory @title: 'Name';
     leadType     : LeadType     @title: 'Lead Type';
     leadCategory : LeadCategory @title: 'Lead Category';
     sourceOfLead : SourceOfLead @title: 'Source of Lead';
     prospectType : ProspectType @title: 'Prospect Type';
-    salesAdvisor : String(100)  @title: 'Sales Advisor';
+    salesAdvisor : String(100)  @mandatory @title: 'Sales Advisor';
     status       : LeadStatus   @title: 'Status';
 
     // ── Compositions ──
@@ -71,7 +71,7 @@ entity Leads : cuid, managed {
 entity LeadActivities : cuid, managed {
     lead         : Association to Leads;
     activityType : ActivityType   @title: 'Activity Type';
-    subject      : String(200)    @title: 'Subject';
+    subject      : String(200)    @mandatory @title: 'Subject';
     scheduledAt  : DateTime       @title: 'Scheduled At';
     completedAt  : DateTime       @title: 'Completed At';
     status       : ActivityStatus @title: 'Status';
@@ -79,18 +79,18 @@ entity LeadActivities : cuid, managed {
 
 entity LeadContactPersons : cuid, managed {
     lead      : Association to Leads;
-    firstName : String(50)   @title: 'First Name';
+    firstName : String(50)   @mandatory @title: 'First Name';
     lastName  : String(50)   @title: 'Last Name';
-    email     : String(100)  @title: 'Email';
-    phone     : String(20)   @title: 'Phone';
+    email     : String(100)  @mandatory @title: 'Email';
+    phone     : String(20)   @mandatory @title: 'Phone';
     isPrimary : Boolean      @title: 'Primary Contact';
 }
 
 entity LeadNotes : cuid, managed {
     lead   : Association to Leads;
-    note   : String(1000)  @title: 'Note';
+    note   : String(1000)  @mandatory @title: 'Note';
     noteBy : String(100)   @title: 'Note By';
-    noteAt : DateTime      @title: 'Note Date';
+    noteAt : DateTime      @mandatory @title: 'Note Date';
 }
 
 
@@ -103,4 +103,44 @@ entity LeadAttachments : cuid {
                              @Core.ContentDisposition.Filename: fileName;
     uploadedBy : String(100);
     uploadedAt : DateTime;
+}
+
+
+
+
+// for drop down
+entity LeadStatuses {
+    key code : String;
+    name     : String;
+}
+
+
+entity LeadTypes {
+    key code : String;
+    name     : String;
+}
+
+entity LeadCategories {
+    key code : String;
+    name     : String;
+}
+
+entity SourceOfLeads {
+    key code : String;
+    name     : String;
+}
+
+entity ProspectTypes {
+    key code : String;
+    name     : String;
+}
+
+entity ActivityTypes {
+    key code : String;
+    name     : String;
+}
+
+entity ActivityStatuses {
+    key code : String;
+    name     : String;
 }

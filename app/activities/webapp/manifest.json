@@ -84,8 +84,8 @@
     "routing": {
       "config": {
         "flexibleColumnLayout": {
-          "defaultTwoColumnLayoutType": "TwoColumnsBeginExpanded",
-          "defaultThreeColumnLayoutType": "ThreeColumnsEndExpanded"
+          "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
+          "defaultThreeColumnLayoutType": "ThreeColumnsMidExpanded"
         },
         "routerClass": "sap.f.routing.Router"
       },

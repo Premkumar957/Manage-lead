@@ -56,13 +56,7 @@ annotate service.Activities with @(
             $Type : 'UI.ReferenceFacet',
             Label : 'Scheduling',
             ID : 'Scheduling',
-            Target : 'schedule/@UI.LineItem#Scheduling',
-        },
-        {
-            $Type : 'UI.ReferenceFacet',
-            Label : 'Attachments',
-            ID : 'Attachments',
-            Target : 'attachment/@UI.LineItem#Attachments',
+            Target : 'schedule/@UI.LineItem#Scheduling1',
         },
     ],
     UI.LineItem : [
@@ -158,7 +152,29 @@ annotate service.Activities with {
 
 annotate service.Scheduling with @(
     UI.LineItem #Scheduling : [
-    ]
+    ],
+    UI.LineItem #Scheduling1 : [
+        {
+            $Type : 'UI.DataField',
+            Value : startDate,
+            Label : 'startDate',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : dueDate,
+            Label : 'dueDate',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : duration,
+            Label : 'duration',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : meetingLocation,
+            Label : 'meetingLocation',
+        },
+    ],
 );
 
 annotate service.Attachments with @(

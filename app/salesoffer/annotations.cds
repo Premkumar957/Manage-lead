@@ -47,15 +47,9 @@ annotate service.SalesOffers with @(
         },
         {
             $Type : 'UI.ReferenceFacet',
-            Label : 'SalesOfferItems',
-            ID : 'SalesOfferItems',
-            Target : 'items/@UI.LineItem#SalesOfferItems',
-        },
-        {
-            $Type : 'UI.ReferenceFacet',
-            Label : 'SalesOfferNotes',
-            ID : 'SalesOfferNotes',
-            Target : 'notes/@UI.LineItem#SalesOfferNotes',
+            Label : 'SalessOfferItems',
+            ID : 'SalessOfferItems',
+            Target : 'items/@UI.LineItem#SalessOfferItems',
         },
     ],
     UI.LineItem : [
@@ -126,7 +120,37 @@ annotate service.SalesOffers with {
 
 annotate service.SalesOfferItems with @(
     UI.LineItem #SalesOfferItems : [
-    ]
+    ],
+    UI.LineItem #SalessOfferItems : [
+        {
+            $Type : 'UI.DataField',
+            Value : unitType,
+            Label : 'unitType',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : area,
+            Label : 'area',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : price,
+            Label : 'price',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : currency,
+            Label : 'currency',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : createdAt,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : createdBy,
+        },
+    ],
 );
 
 annotate service.SalesOfferNotes with @(
