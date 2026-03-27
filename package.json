@@ -16,7 +16,8 @@
     "app/salesoffer",
     "app/activities",
     "app/customers",
-    "app/customers"
+    "app/customers",
+    "app/businesspartners"
   ],
   "scripts": {
     "undeploy": "cf undeploy manage-lead --delete-services --delete-service-keys --delete-service-brokers",
@@ -24,18 +25,18 @@
     "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
   },
   "cds": {
-  "requires": {
-    "API_BUSINESS_PARTNER": {
-      "kind": "odata-v2",
-      "model": "srv/external/API_BUSINESS_PARTNER",
-      "credentials": {
-        "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER",
-        "headers": {
-          "APIKey": "PyEKIqtO6jMczj1yyn3xctK2QETvlqGn",
-          "sap-client": "100"
+    "requires": {
+      "API_BUSINESS_PARTNER": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_BUSINESS_PARTNER",
+        "credentials": {
+          "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER",
+          "headers": {
+            "APIKey": "PyEKIqtO6jMczj1yyn3xctK2QETvlqGn",
+            "sap-client": "100"
+          }
         }
       }
     }
   }
-}
 }

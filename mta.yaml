@@ -36,9 +36,23 @@ modules:
       - comnorthwindcustomers.zip
       name: comnorthwindcustomers
       target-path: resources/
+    - artifacts:
+      - customermanageleadbusinesspartners.zip
+      name: customermanageleadbusinesspartners
+      target-path: resources/
 - name: comnorthwindcustomers
   type: html5
   path: app/customers
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: customermanageleadbusinesspartners
+  type: html5
+  path: app/businesspartners
   build-parameters:
     build-result: dist
     builder: custom
