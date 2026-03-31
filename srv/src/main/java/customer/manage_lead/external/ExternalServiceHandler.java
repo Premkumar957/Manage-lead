@@ -2,6 +2,7 @@ package customer.manage_lead.external;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.net.CookieManager;
 import java.net.URI;
 import java.net.http.*;
 import java.util.*;
@@ -15,6 +16,7 @@ import com.sap.cds.ResultBuilder;
 import com.sap.cds.services.cds.CdsReadEventContext;
 import com.sap.cds.services.handler.EventHandler;
 import com.sap.cds.services.handler.annotations.*;
+import com.sap.cds.services.EventContext;
 
 @Component
 @ServiceName("ExternalService")
@@ -140,4 +142,88 @@ public class ExternalServiceHandler implements EventHandler {
                 .result()
         );
     }
+
+
+    // create new business partner
+    @On(event = "createBusinessPartner")
+    public void createBusinessPartner(EventContext ctx) {
+
+        // 🔥 1. Read ALL parameters from UI
+        String name = (String) ctx.get("BusinessPartnerFullName");
+        String category = (String) ctx.get("BusinessPartnerCategory");
+        String grouping = (String) ctx.get("BusinessPartnerGrouping");
+
+        Boolean isBlocked = (Boolean) ctx.get("BusinessPartnerIsBlocked");
+        Boolean isArchived = (Boolean) ctx.get("IsMarkedForArchiving");
+
+        // ⚠️ Not directly usable in BP API (explained below)
+        Boolean customer = (Boolean) ctx.get("Customer");
+        Boolean supplier = (Boolean) ctx.get("Supplier");
+        String industry = (String) ctx.get("Industry");
+
+        try {
+            // 🔥 2. Create HTTP client with cookies (MANDATORY for CSRF)
+            CookieManager cookieManager = new CookieManager();
+            HttpClient client = HttpClient.newBuilder()
+                    .cookieHandler(cookieManager)
+                    .build();
+
+            // 🔥 3. Fetch CSRF token
+            HttpRequest tokenRequest = HttpRequest.newBuilder()
+                    .uri(URI.create(BASE_URL + "/A_BusinessPartner"))
+                    .header("APIKey", API_KEY)
+                    .header("x-csrf-token", "fetch")
+                    .GET()
+                    .build();
+
+            HttpResponse<String> tokenResponse =
+                    client.send(tokenRequest, HttpResponse.BodyHandlers.ofString());
+
+            String csrfToken = tokenResponse.headers()
+                    .firstValue("x-csrf-token")
+                    .orElseThrow(() -> new RuntimeException("CSRF token not found"));
+
+            // 🔥 4. Build payload (ONLY valid fields for BP API)
+            String payload;
+
+            if ("1".equals(category)) {
+                // Person
+                payload = "{"
+                        + "\"BusinessPartnerCategory\":\"1\","
+                        + "\"BusinessPartnerGrouping\":\"" + grouping + "\","
+                        + "\"FirstName\":\"" + name + "\""
+                        + "}";
+            } else {
+                // Organization (default safe)
+                payload = "{"
+                        + "\"BusinessPartnerCategory\":\"2\","
+                        + "\"BusinessPartnerGrouping\":\"" + grouping + "\","
+                        + "\"OrganizationBPName1\":\"" + name + "\""
+                        + "}";
+            }
+
+            // 🔥 5. POST request with CSRF token
+            HttpRequest postRequest = HttpRequest.newBuilder()
+                    .uri(URI.create(BASE_URL + "/A_BusinessPartner"))
+                    .header("APIKey", API_KEY)
+                    .header("Content-Type", "application/json")
+                    .header("x-csrf-token", csrfToken)
+                    .POST(HttpRequest.BodyPublishers.ofString(payload))
+                    .build();
+
+            HttpResponse<String> postResponse =
+                    client.send(postRequest, HttpResponse.BodyHandlers.ofString());
+
+            // 🔥 6. Handle response
+            if (postResponse.statusCode() >= 200 && postResponse.statusCode() < 300) {
+                ctx.put("result", postResponse.body());
+            } else {
+                throw new RuntimeException("S/4 Error: " + postResponse.body());
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException("External POST failed: " + e.getMessage());
+        }
+    }
+
 }

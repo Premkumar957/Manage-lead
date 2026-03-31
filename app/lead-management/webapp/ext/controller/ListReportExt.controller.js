@@ -77,6 +77,7 @@ sap.ui.define([
 
         onCloseDialog: function () {
             this._oDialog.close();
-        }
+        },
+
     });
 });

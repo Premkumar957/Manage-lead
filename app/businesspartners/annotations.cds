@@ -33,11 +33,6 @@ annotate ExternalService.BusinessPartners with @(
         },
         {
             $Type : 'UI.DataField',
-            Value : CreationDate,
-            Label : 'CreationDate',
-        },
-        {
-            $Type : 'UI.DataField',
             Value : Customer,
             Label : 'Customer',
         },

@@ -12,28 +12,18 @@ service ExternalService {
             Customer,
             Supplier,
             BusinessPartnerIsBlocked,
-            IsMarkedForArchiving,
-            CreationDate
+            IsMarkedForArchiving
     };
 
-    // 2. Address
-    entity BusinessPartnerAddresses as projection on external.A_BusinessPartnerAddress {
-        key BusinessPartner,
-        key AddressID,
-            StreetName,
-            HouseNumber,
-            CityName,
-            PostalCode,
-            Region,
-            Country
-    };
-
-    // 3. Role
-    entity BusinessPartnerRoles as projection on external.A_BusinessPartnerRole {
-        key BusinessPartner,
-        key BusinessPartnerRole,
-            ValidFrom,
-            ValidTo
-    };
+    action createBusinessPartner(
+        BusinessPartnerFullName : String,
+        BusinessPartnerCategory : String,
+        BusinessPartnerGrouping : String,
+        Industry : String,
+        Customer : Boolean,
+        Supplier : Boolean,
+        BusinessPartnerIsBlocked : Boolean,
+        IsMarkedForArchiving : Boolean
+    ) returns String;
 
 }
