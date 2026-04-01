@@ -8,22 +8,27 @@ service ExternalService {
             BusinessPartnerFullName,
             BusinessPartnerCategory,    // 1=Person | 2=Organization | 3=Group
             BusinessPartnerGrouping,
-            Industry,
-            Customer,
-            Supplier,
+
+            FirstName,
+            LastName,
+
+            OrganizationBPName1,
+            GroupBusinessPartnerName1,
+
+            CorrespondenceLanguage,    // 1.EN  2.DE  3.FR
             BusinessPartnerIsBlocked,
             IsMarkedForArchiving
     };
 
     action createBusinessPartner(
-        BusinessPartnerFullName : String,
-        BusinessPartnerCategory : String,
-        BusinessPartnerGrouping : String,
-        Industry : String,
-        Customer : Boolean,
-        Supplier : Boolean,
-        BusinessPartnerIsBlocked : Boolean,
-        IsMarkedForArchiving : Boolean
+        BusinessPartnerCategory  : String,
+        BusinessPartnerGrouping  : String,
+        FirstName                : String,   // ✅ must exist
+        LastName                 : String,   // ✅ must exist
+        OrganizationBPName1      : String,
+        GroupBusinessPartnerName1: String,
+        CorrespondenceLanguage   : String
     ) returns String;
 
 }
+

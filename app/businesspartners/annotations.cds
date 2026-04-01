@@ -88,18 +88,8 @@ annotate ExternalService.BusinessPartners with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : Industry,
-                Label : 'Industry',
-            },
-            {
-                $Type : 'UI.DataField',
                 Value : IsMarkedForArchiving,
                 Label : 'IsMarkedForArchiving',
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : Supplier,
-                Label : 'Supplier',
             },
         ],
     },

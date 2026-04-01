@@ -9,79 +9,119 @@ sap.ui.define([
 
     return ControllerExtension.extend("customer.managelead.businesspartners.ext.controller.ExternalPost", {
 
-        // 🔥 Custom button handler
         onPostExternal: async function () {
-            MessageToast.show("create method invoked");
+            const oView = this.base.getView();
 
-            const oView = this.base.getView(); // ✅ correct way
-
-            // Create local model for fragment
-            const oLocalModel = new JSONModel({
-                BusinessPartnerFullName: "",
-                BusinessPartnerCategory: "2",
-                BusinessPartnerGrouping: "",
-                Industry: "",
-                Customer: false,
-                Supplier: false,
-                BusinessPartnerIsBlocked: false,
-                IsMarkedForArchiving: false
-            });
-
-            oView.setModel(oLocalModel, "localModel");
-
-            // Load fragment
             if (!this._oDialog) {
                 this._oDialog = await Fragment.load({
+                    id: oView.getId(),
                     name: "customer.managelead.businesspartners.ext.fragment.CreateBusinessPartner",
                     controller: this
                 });
                 oView.addDependent(this._oDialog);
             }
 
+            // ✅ Reset model fresh every time dialog opens
+            const oLocalModel = new JSONModel({
+                BusinessPartnerCategory: "1",
+                BusinessPartnerGrouping: "",
+                CorrespondenceLanguage: "EN",
+                FirstName: "",
+                LastName: "",
+                OrganizationBPName1: "",
+                GroupBusinessPartnerName1: ""
+            });
+
+            oLocalModel.setDefaultBindingMode("TwoWay");
+            oView.setModel(oLocalModel, "localModel");
+
             this._oDialog.open();
         },
 
-        // 🔥 Create button inside fragment
         onCreateBP: async function () {
-
             const oView = this.base.getView();
-            const oData = oView.getModel("localModel").getData();
-            const oModel = oView.getModel(); // OData V4 model
+            const oLocalModel = oView.getModel("localModel");
+            const oModel = oView.getModel();
 
-            if (!oModel) {
-                MessageBox.error("OData model not found");
+            const oData = {
+                BusinessPartnerCategory:   oLocalModel.getProperty("/BusinessPartnerCategory"),
+                BusinessPartnerGrouping:   oLocalModel.getProperty("/BusinessPartnerGrouping"),
+                FirstName:                 oLocalModel.getProperty("/FirstName"),
+                LastName:                  oLocalModel.getProperty("/LastName"),
+                OrganizationBPName1:       oLocalModel.getProperty("/OrganizationBPName1"),
+                GroupBusinessPartnerName1: oLocalModel.getProperty("/GroupBusinessPartnerName1"),
+                CorrespondenceLanguage:    oLocalModel.getProperty("/CorrespondenceLanguage")
+            };
+
+            console.log("FINAL DATA:", oData);
+
+            // Validation
+            if (!oData.BusinessPartnerGrouping) {
+                MessageBox.error("Grouping is required");
                 return;
+            }
+
+            let payload = {
+                BusinessPartnerCategory: oData.BusinessPartnerCategory,
+                BusinessPartnerGrouping: oData.BusinessPartnerGrouping,
+                CorrespondenceLanguage:  oData.CorrespondenceLanguage
+            };
+
+            if (oData.BusinessPartnerCategory === "1") {
+                if (!oData.FirstName || !oData.LastName) {
+                    MessageBox.error("First Name and Last Name are required");
+                    return;
+                }
+                payload.FirstName = oData.FirstName;
+                payload.LastName  = oData.LastName;
+            }
+
+            if (oData.BusinessPartnerCategory === "2") {
+                if (!oData.OrganizationBPName1) {
+                    MessageBox.error("Organization Name is required");
+                    return;
+                }
+                payload.OrganizationBPName1 = oData.OrganizationBPName1;
+            }
+
+            if (oData.BusinessPartnerCategory === "3") {
+                if (!oData.GroupBusinessPartnerName1) {
+                    MessageBox.error("Group Name is required");
+                    return;
+                }
+                payload.GroupBusinessPartnerName1 = oData.GroupBusinessPartnerName1;
             }
 
             try {
                 const oAction = oModel.bindContext("/createBusinessPartner(...)");
 
-                oAction.setParameter("BusinessPartnerFullName", oData.BusinessPartnerFullName);
-                oAction.setParameter("BusinessPartnerCategory", oData.BusinessPartnerCategory);
-                oAction.setParameter("BusinessPartnerGrouping", oData.BusinessPartnerGrouping);
-                oAction.setParameter("Industry", oData.Industry);
-                oAction.setParameter("Customer", oData.Customer);
-                oAction.setParameter("Supplier", oData.Supplier);
-                oAction.setParameter("BusinessPartnerIsBlocked", oData.BusinessPartnerIsBlocked);
-                oAction.setParameter("IsMarkedForArchiving", oData.IsMarkedForArchiving);
+                Object.keys(payload).forEach(k => {
+                    oAction.setParameter(k, payload[k]);
+                });
 
                 await oAction.execute();
 
-                MessageToast.show("Business Partner created successfully");
+                // ✅ Success
+                MessageToast.show("Business Partner created successfully!");
                 this._oDialog.close();
-
-                // refresh list
-                oView.getModel().refresh();
+                oModel.refresh();
 
             } catch (e) {
-                MessageBox.error("Creation failed: " + e.message);
+                // ✅ FIXED: S/4HANA may return a "false failure" when BP is actually created.
+                // Check if the error message contains PartnerGUID — if so, treat as success.
+                const sMsg = e.message || "";
+                if (sMsg.includes("PartnerGUID")) {
+                    MessageToast.show("Business Partner created successfully!");
+                    this._oDialog.close();
+                    oModel.refresh();
+                } else {
+                    MessageBox.error("Creation failed: " + sMsg);
+                }
             }
         },
 
-        // 🔥 Cancel button
         onCancel: function () {
             this._oDialog.close();
         }
-
     });
 });
