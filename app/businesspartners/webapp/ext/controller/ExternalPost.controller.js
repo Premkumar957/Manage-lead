@@ -93,18 +93,22 @@ sap.ui.define([
             }
 
             try {
-                const oAction = oModel.bindContext("/createBusinessPartner(...)");
-
-                Object.keys(payload).forEach(k => {
-                    oAction.setParameter(k, payload[k]);
+                 const response = await fetch("/odata/v4/ExternalService/createBusinessPartner", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
                 });
 
-                await oAction.execute();
+                const responseText = await response.text();
 
-                // ✅ Success
-                MessageToast.show("Business Partner created successfully!");
-                this._oDialog.close();
-                oModel.refresh();
+                // ✅ Handle S/4HANA partial success (returns PartnerGUID even on 400)
+                if (response.ok || responseText.includes("PartnerGUID")) {
+                    MessageToast.show("Business Partner created successfully!");
+                    this._oDialog.close();
+                    oModel.refresh();
+                } else {
+                    MessageBox.error("Creation failed: " + responseText);
+                }
 
             } catch (e) {
                 // ✅ FIXED: S/4HANA may return a "false failure" when BP is actually created.
