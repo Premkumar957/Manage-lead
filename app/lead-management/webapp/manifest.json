@@ -208,11 +208,7 @@
                   }
                 }
               },
-<<<<<<< HEAD
-              "sectionLayout": "Page"
-=======
-              "sectionLayout": "Tabs"
->>>>>>> c28efc9d819e94b7c29dad66db35d7284185fa91
+              "sectionLayout": "Tabs"    
             }
           },
           "controlAggregation": "midColumnPages",

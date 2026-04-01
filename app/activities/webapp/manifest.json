@@ -115,6 +115,7 @@
             "settings": {
               "contextPath": "/Activities",
               "variantManagement": "Page",
+              "initialLoad": "Enabled",
               "navigation": {
                 "Activities": {
                   "detail": {
@@ -131,8 +132,7 @@
                     }
                   }
                 }
-              },
-              "initialLoad": "Enabled"
+              }
             }
           },
           "controlAggregation": "beginColumnPages",
@@ -160,13 +160,29 @@
       "id": "appRootView"
     }
   },
+  "sap.flp": {
+    "type": "application",
+    "inbounds": {
+      "activities-tile": {
+        "semanticObject": "activities",
+        "action": "tile",
+        "title": "Activities",
+        "subtitle": "Manage Activities",
+        "icon": "sap-icon://activity-items",
+        "signature": {
+          "parameters": {},
+          "additionalParameters": "allowed"
+        }
+      }
+    }
+  },
   "sap.fiori": {
     "registrationIds": [],
     "archeType": "transactional"
   },
   "sap.fe": {
     "app": {
-      "enableLazyLoading": true
+      "enableLazyLoading": false
     }
   }
 }

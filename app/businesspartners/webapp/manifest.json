@@ -124,6 +124,7 @@
             "settings": {
               "contextPath": "/BusinessPartners",
               "variantManagement": "Page",
+              "initialLoad": "Enabled",
               "navigation": {
                 "BusinessPartners": {
                   "detail": {
@@ -174,13 +175,29 @@
       "id": "appRootView"
     }
   },
+  "sap.flp": {
+    "type": "application",
+    "inbounds": {
+      "leadmanagement-tile": {
+        "semanticObject": "leadmanagement",
+        "action": "tile",
+        "title": "Business Partners",
+        "subtitle": "Manage Business Partners",
+        "icon": "sap-icon://business-partner",
+        "signature": {
+          "parameters": {},
+          "additionalParameters": "allowed"
+        }
+      }
+    }
+  },
   "sap.fiori": {
     "registrationIds": [],
     "archeType": "transactional"
   },
   "sap.fe": {
     "app": {
-      "enableLazyLoading": true
+      "enableLazyLoading": false
     }
   }
 }
