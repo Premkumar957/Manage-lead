@@ -131,7 +131,66 @@ annotate service.LeadActivities with @(
             $Type : 'UI.DataField',
             Value : completedAt,
         },
-    ]
+    ],
+    UI.HeaderInfo : {
+        TypeName : 'Activity',
+        TypeNamePlural : 'Activities',
+        Title : {
+            $Type : 'UI.DataField',
+            Value : lead_ID,
+        },
+        Description : {
+            $Type : 'UI.DataField',
+            Value : status,
+        },
+        TypeImageUrl : 'sap-icon://activity-items',
+    },
+    UI.Facets : [
+        {
+            $Type : 'UI.ReferenceFacet',
+            Label : 'Activity Information',
+            ID : 'ActivityInformation',
+            Target : '@UI.FieldGroup#ActivityInformation',
+        },
+    ],
+    UI.FieldGroup #ActivityInformation : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : ID,
+                Label : 'ID',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : subject,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : activityType,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : status,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : scheduledAt,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : completedAt,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : createdAt,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : createdBy,
+            },
+        ],
+    },
 );
 
 annotate service.LeadContactPersons with @(

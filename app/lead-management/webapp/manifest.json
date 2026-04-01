@@ -58,7 +58,8 @@
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
-        "sap.fe.templates": {}
+        "sap.fe.templates": {},
+        "sap.f": {}
       }
     },
     "contentDensities": {
@@ -90,7 +91,13 @@
       "css": []
     },
     "routing": {
-      "config": {},
+      "config": {
+        "flexibleColumnLayout": {
+          "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
+          "defaultThreeColumnLayoutType": "ThreeColumnsMidExpanded"
+        },
+        "routerClass": "sap.f.routing.Router"
+      },
       "routes": [
         {
           "pattern": ":?query:",
@@ -105,6 +112,15 @@
           "target": [
             "LeadsList",
             "LeadsObjectPage"
+          ]
+        },
+        {
+          "name": "Leads_activitiesObjectPage",
+          "pattern": "Leads({key})/activities({activitiesKey}):?query:",
+          "target": [
+            "LeadsList",
+            "LeadsObjectPage",
+            "Leads_activitiesObjectPage"
           ]
         }
       ],
@@ -145,7 +161,9 @@
               },
               "initialLoad": "Enabled"
             }
-          }
+          },
+          "controlAggregation": "beginColumnPages",
+          "contextPattern": ""
         },
         "LeadsObjectPage": {
           "type": "Component",
@@ -155,7 +173,13 @@
             "settings": {
               "editableHeaderContent": false,
               "contextPath": "/Leads",
-              "navigation": {},
+              "navigation": {
+                "activities": {
+                  "detail": {
+                    "route": "Leads_activitiesObjectPage"
+                  }
+                }
+              },
               "content": {
                 "header": {
                   "anchorBarVisible": true
@@ -183,11 +207,33 @@
                     }
                   }
                 }
-              }
+              },
+              "sectionLayout": "Page"
             }
-          }
+          },
+          "controlAggregation": "midColumnPages",
+          "contextPattern": "/Leads({key})"
+        },
+        "Leads_activitiesObjectPage": {
+          "type": "Component",
+          "id": "Leads_activitiesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/Leads/activities"
+            }
+          },
+          "controlAggregation": "endColumnPages",
+          "contextPattern": "/Leads({key})/activities({activitiesKey})"
         }
       }
+    },
+    "rootView": {
+      "viewName": "sap.fe.templates.RootContainer.view.Fcl",
+      "type": "XML",
+      "async": true,
+      "id": "appRootView"
     }
   },
   "sap.fiori": {
