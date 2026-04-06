@@ -31,16 +31,6 @@ annotate ExternalService.BusinessPartners with @(
             $Type : 'UI.DataField',
             Value : BusinessPartnerIsBlocked,
         },
-        {
-            $Type : 'UI.DataField',
-            Value : Customer,
-            Label : 'Customer',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : Supplier,
-            Label : 'Supplier',
-        },
     ],
     UI.Facets : [
         {
