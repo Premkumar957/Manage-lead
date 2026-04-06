@@ -14,7 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.sap.cds.ql.Insert;
+import com.sap.cds.services.ErrorStatuses;
+import com.sap.cds.services.ServiceException;
 import com.sap.cds.services.handler.EventHandler;
+import com.sap.cds.services.handler.annotations.Before;
 import com.sap.cds.services.handler.annotations.On;
 import com.sap.cds.services.handler.annotations.ServiceName;
 import com.sap.cds.services.persistence.PersistenceService;
@@ -23,6 +26,8 @@ import cds.gen.UploadExcelResult;
 import cds.gen.leadservice.UploadExcelContext;
 import cds.gen.leadservice.Leads;
 import cds.gen.leadservice.Leads_;
+import cds.gen.leadservice.LeadContactPersons;
+import cds.gen.leadservice.LeadContactPersons_;
 
 @Component
 @ServiceName("LeadService")
@@ -187,4 +192,31 @@ public class LeadServiceHandler implements EventHandler {
                 result.setMessage(message);
                 return result;
         }
+
+
+        // 1. Update the method signature to include 'EventContext context'
+        @Before(event = { "CREATE", "UPDATE" }, entity = "LeadService.Leads")
+        public void validateLeadData(List<Leads> leads, com.sap.cds.services.EventContext context) {
+        for (Leads lead : leads) {
+                if (lead.getContacts() != null) {
+                for (LeadContactPersons contact : lead.getContacts()) {
+
+                        // 1. Validate Phone
+                        String phone = contact.getPhone();
+                        if (phone != null && !phone.matches("\\d{10}")) {
+                        context.getMessages().error("Phone number must contain exactly 10 digits")
+                                .target("contacts/phone"); // Fixed: String path
+                        }
+
+                        // 2. Validate Email
+                        String email = contact.getEmail();
+                        if (email != null && !email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+                        context.getMessages().error("Please enter a valid email address")
+                                .target("contacts/email"); // Fixed: String path
+                        }
+                }
+                }
+        }
+        }
+
 }

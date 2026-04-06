@@ -5,14 +5,14 @@ using { cuid, managed } from '@sap/cds/common';
 
 
 entity Activities : cuid, managed {
-    accountType  : String(20);  // use enum
-    activityType : String(20);  // use enum
-    customer     : String(30);
-    startDate    : Date;
-    dueDate      : Date;
-    priority     : String(20);   // use enum
-    salesAdvisor : String(30);
-    status       : String(20);   // use enum
+    accountType  : String(20) @mandatory @title : 'Account Type';  // use enum
+    activityType : String(20) @title : 'Activity Type';  // use enum
+    customer     : String(30) @title : 'Customer';
+    startDate    : Date @mandatory @title : 'Start Date';
+    dueDate      : Date @mandatory @title : 'Due Date';
+    priority     : String(20) @mandatory @title : 'Priority';   // use enum
+    salesAdvisor : String(30) @title : 'Sales Advisor';
+    status       : String(20) @title : 'Status';   // use enum
 
     schedule     : Composition of many Scheduling on schedule.activity = $self;
     attachment   : Composition of many Attachments on attachment.activity = $self;
@@ -22,10 +22,10 @@ entity Activities : cuid, managed {
 
 entity Scheduling : cuid {
     activity        : Association to Activities;
-    startDate       : Timestamp;
-    dueDate         : Timestamp;
-    duration        : Integer;
-    meetingLocation : String(50);
+    startDate       : Timestamp @mandatory @title : 'Start Date';
+    dueDate         : Timestamp @mandatory @title : 'Due Date';
+    duration        : Integer @title : 'Duration';
+    meetingLocation : String(50) @mandatory @title : 'Meeting Location';
 }
 
 
