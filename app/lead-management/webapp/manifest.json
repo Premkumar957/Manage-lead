@@ -107,15 +107,6 @@
             "LeadsList",
             "LeadsObjectPage"
           ]
-        },
-        {
-          "name": "Leads_activitiesObjectPage",
-          "pattern": "Leads({key})/activities({activitiesKey}):?query:",
-          "target": [
-            "LeadsList",
-            "LeadsObjectPage",
-            "Leads_activitiesObjectPage"
-          ]
         }
       ],
       "targets": {
@@ -165,13 +156,7 @@
             "settings": {
               "editableHeaderContent": false,
               "contextPath": "/Leads",
-              "navigation": {
-                "activities": {
-                  "detail": {
-                    "route": "Leads_activitiesObjectPage"
-                  }
-                }
-              },
+              "navigation": {},
               "content": {
                 "header": {
                   "anchorBarVisible": true
@@ -201,17 +186,6 @@
                 }
               },
               "sectionLayout": "Page"
-            }
-          }
-        },
-        "Leads_activitiesObjectPage": {
-          "type": "Component",
-          "id": "Leads_activitiesObjectPage",
-          "name": "sap.fe.templates.ObjectPage",
-          "options": {
-            "settings": {
-              "navigation": {},
-              "contextPath": "/Leads/activities"
             }
           }
         }

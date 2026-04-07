@@ -25,7 +25,7 @@ entity Scheduling : cuid {
     startDate       : Timestamp @mandatory @title : 'Start Date';
     dueDate         : Timestamp @mandatory @title : 'Due Date';
     duration        : Integer @title : 'Duration';
-    meetingLocation : String(50) @mandatory @title : 'Meeting Location';
+    meetingLocation : String(50) @title : 'Meeting Location';
 }
 
 
