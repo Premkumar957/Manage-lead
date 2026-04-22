@@ -1,0 +1,136 @@
+{
+  "_version": "1.83.0",
+  "sap.app": {
+    "id": "com.inflexion.businesspartner.bpcreate",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.22.0",
+      "toolsId": "23a1426e-cbfa-47a2-893a-96af5e460729"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/ExternalService/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.01"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.146.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ui.comp": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.inflexion.businesspartner.bpcreate.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "com.inflexion.businesspartner.bpcreate.view",
+        "async": true,
+        "viewPath": "com.inflexion.businesspartner.bpcreate.view"
+      },
+      "routes": [
+        {
+          "name": "RouteManageBusinessPartner",
+          "pattern": ":?query:",
+          "target": [
+            "TargetManageBusinessPartner"
+          ]
+        },
+        {
+          "name": "BusinessPartnerDetail",
+          "pattern": "businesspartner/{bpId}",
+          "target": ["TargetBusinessPartnerDetail"]
+        },
+        {
+          "name": "CreateBusinessPartner",
+          "pattern": "create",
+          "target": ["TargetCreateBusinessPartner"]
+        }
+      ],
+      "targets": {
+        "TargetManageBusinessPartner": {
+          "id": "ManageBusinessPartner",
+          "name": "ManageBusinessPartner"
+        },
+        "TargetBusinessPartnerDetail": {
+          "id": "BusinessPartnerDetail",
+          "name": "BusinessPartnerDetail"
+        },
+        "TargetCreateBusinessPartner": {
+          "id": "CreateBusinessPartner",
+          "name": "CreateBusinessPartner"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.inflexion.businesspartner.bpcreate.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}

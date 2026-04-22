@@ -1,0 +1,201 @@
+<mvc:View
+    controllerName="com.inflexion.businesspartner.bpcreate.controller.BusinessPartnerDetail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:uxap="sap.uxap"
+    xmlns:form="sap.ui.layout.form">
+
+    <uxap:ObjectPageLayout>
+
+        <!-- 🔥 HEADER -->
+        <uxap:headerTitle>
+            <uxap:ObjectPageDynamicHeaderTitle>
+
+                <uxap:heading>
+                    <ObjectIdentifier 
+                        title="{BusinessPartnerFullName}" 
+                        text="ID: {BusinessPartner}" />
+                </uxap:heading>
+
+                <uxap:actions>
+                    <Button text="Edit" type="Emphasized"/>
+                </uxap:actions>
+
+            </uxap:ObjectPageDynamicHeaderTitle>
+        </uxap:headerTitle>
+
+        <!-- 🔥 SECTIONS -->
+        <uxap:sections>
+
+            <!-- GENERAL -->
+            <uxap:ObjectPageSection title="General Information">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection>
+
+                        <form:SimpleForm
+                            layout="ResponsiveGridLayout"
+                            labelSpanXL="3"
+                            labelSpanL="3"
+                            labelSpanM="4"
+                            labelSpanS="12"
+                            adjustLabelSpan="false"
+                            emptySpanXL="1"
+                            emptySpanL="1"
+                            emptySpanM="0"
+                            emptySpanS="0"
+                            columnsXL="2"
+                            columnsL="2"
+                            columnsM="1">
+
+                            <Label text="Business Partner"/>
+                            <Text text="{BusinessPartner}"/>
+
+                            <Label text="Full Name"/>
+                            <Text text="{BusinessPartnerFullName}"/>
+
+                            <Label text="Category"/>
+                            <Text text="{BusinessPartnerCategory}"/>
+
+                            <Label text="Grouping"/>
+                            <Text text="{BusinessPartnerGrouping}"/>
+
+                        </form:SimpleForm>
+
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+
+            <!-- PERSON -->
+            <uxap:ObjectPageSection title="Person Details">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection>
+
+                        <form:SimpleForm
+                            layout="ResponsiveGridLayout"
+                            labelSpanXL="3"
+                            labelSpanL="3"
+                            labelSpanM="4"
+                            labelSpanS="12"
+                            columnsXL="2"
+                            columnsL="2"
+                            columnsM="1">
+
+                            <Label text="First Name"/>
+                            <Text text="{FirstName}"/>
+
+                            <Label text="Last Name"/>
+                            <Text text="{LastName}"/>
+
+                        </form:SimpleForm>
+
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+
+            <!-- ORGANIZATION -->
+            <uxap:ObjectPageSection title="Organization Details">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection>
+
+                        <form:SimpleForm
+                            layout="ResponsiveGridLayout"
+                            labelSpanXL="3"
+                            labelSpanL="3"
+                            labelSpanM="4"
+                            labelSpanS="12"
+                            columnsXL="2"
+                            columnsL="2"
+                            columnsM="1">
+
+                            <Label text="Organization Name"/>
+                            <Text text="{OrganizationBPName1}"/>
+
+                        </form:SimpleForm>
+
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+
+            <!-- GROUP -->
+            <uxap:ObjectPageSection title="Group Details">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection>
+
+                        <form:SimpleForm
+                            layout="ResponsiveGridLayout"
+                            labelSpanXL="3"
+                            labelSpanL="3"
+                            labelSpanM="4"
+                            labelSpanS="12"
+                            columnsXL="2"
+                            columnsL="2"
+                            columnsM="1">
+
+                            <Label text="Group Name"/>
+                            <Text text="{GroupBusinessPartnerName1}"/>
+
+                        </form:SimpleForm>
+
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+
+            <!-- COMMUNICATION -->
+            <uxap:ObjectPageSection title="Communication">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection>
+
+                        <form:SimpleForm
+                            layout="ResponsiveGridLayout"
+                            labelSpanXL="3"
+                            labelSpanL="3"
+                            labelSpanM="4"
+                            labelSpanS="12"
+                            columnsXL="2"
+                            columnsL="2"
+                            columnsM="1">
+
+                            <Label text="Language"/>
+                            <Text text="{CorrespondenceLanguage}"/>
+
+                        </form:SimpleForm>
+
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+
+            <!-- STATUS -->
+            <uxap:ObjectPageSection title="Status">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection>
+
+                        <form:SimpleForm
+                            layout="ResponsiveGridLayout"
+                            labelSpanXL="3"
+                            labelSpanL="3"
+                            labelSpanM="4"
+                            labelSpanS="12"
+                            columnsXL="2"
+                            columnsL="2"
+                            columnsM="1">
+
+                            <Label text="Blocked"/>
+                            <ObjectStatus 
+                                text="{= ${BusinessPartnerIsBlocked} ? 'Blocked' : 'Active'}"
+                                state="{= ${BusinessPartnerIsBlocked} ? 'Error' : 'Success'}"/>
+
+                            <Label text="Archived"/>
+                            <ObjectStatus 
+                                text="{= ${IsMarkedForArchiving} ? 'Archived' : 'Active'}"
+                                state="{= ${IsMarkedForArchiving} ? 'Warning' : 'Success'}"/>
+
+                        </form:SimpleForm>
+
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+
+        </uxap:sections>
+
+    </uxap:ObjectPageLayout>
+</mvc:View>

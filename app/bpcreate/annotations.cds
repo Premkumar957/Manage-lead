@@ -1,0 +1,1 @@
+using ActivitiesService as service from '../../srv/activity-services';

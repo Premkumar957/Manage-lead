@@ -1,0 +1,95 @@
+<mvc:View
+    controllerName="com.inflexion.businesspartner.bpcreate.controller.CreateBusinessPartner"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+
+    <Page title="Create Business Partner">
+
+        <content>
+
+            <Panel headerText="General Information" class="sapUiResponsiveMargin">
+
+                <form:SimpleForm layout="ResponsiveGridLayout" columnsL="2">
+
+                    <!-- ID -->
+                    <Label text="Business Partner ID"/>
+                    <Input value="{createModel>/BusinessPartner}" width="300px" editable="false"/>
+
+                    <!-- CATEGORY -->
+                    <Label text="Category" required="true"/>
+                    <Select selectedKey="{createModel>/BusinessPartnerCategory}" width="200px">
+                        <items>
+                            <core:Item key="1" text="Person"/>
+                            <core:Item key="2" text="Organization"/>
+                            <core:Item key="3" text="Group"/>
+                        </items>
+                    </Select>
+
+                    <!-- GROUPING -->
+                    <Label text="Grouping" required="true"/>
+                    <Input value="{createModel>/BusinessPartnerGrouping}" width="200px" />
+
+                    <!-- PERSON -->
+                    <Label text="First Name"
+                        required="{= ${createModel>/BusinessPartnerCategory} === '1' }"
+                        visible="{= ${createModel>/BusinessPartnerCategory} === '1' }"/>
+
+                    <Input value="{createModel>/FirstName}" width="200px"
+                        visible="{= ${createModel>/BusinessPartnerCategory} === '1' }"/>
+
+                    <Label text="Last Name" 
+                        visible="{= ${createModel>/BusinessPartnerCategory} === '1' }"/>
+
+                    <Input value="{createModel>/LastName}" width="200px"
+                        visible="{= ${createModel>/BusinessPartnerCategory} === '1' }"/>
+
+                    <!-- ORGANIZATION -->
+                    <Label text="Organization Name"
+                        required="{= ${createModel>/BusinessPartnerCategory} === '2' }"
+                        visible="{= ${createModel>/BusinessPartnerCategory} === '2' }"/>
+
+                    <Input value="{createModel>/OrganizationBPName1}" width="300px"
+                        visible="{= ${createModel>/BusinessPartnerCategory} === '2' }"/>
+
+                    <!-- GROUP -->
+                    <Label text="Group Name"
+                        required="{= ${createModel>/BusinessPartnerCategory} === '3' }"
+                        visible="{= ${createModel>/BusinessPartnerCategory} === '3' }"/>
+
+                    <Input value="{createModel>/GroupBusinessPartnerName1}" width="200px"
+                        visible="{= ${createModel>/BusinessPartnerCategory} === '3' }"/>
+
+                    <!-- LANGUAGE -->
+                    <Label text="Language"/>
+                    <Select selectedKey="{createModel>/CorrespondenceLanguage}" width="150px">
+                        <items>
+                            <core:Item key="EN" text="English"/>
+                            <core:Item key="DE" text="German"/>
+                            <core:Item key="FR" text="French"/>
+                        </items>
+                    </Select>
+
+                </form:SimpleForm>
+
+            </Panel>
+
+            <!-- STATUS -->
+            <Panel headerText="Status" class="sapUiResponsiveMargin">
+                <VBox>
+                    <CheckBox text="Blocked" selected="{createModel>/BusinessPartnerIsBlocked}"/>
+                    <CheckBox text="Archived" selected="{createModel>/IsMarkedForArchiving}"/>
+                </VBox>
+            </Panel>
+
+            <!-- ACTIONS -->
+            <HBox justifyContent="End" class="sapUiMediumMargin">
+                <Button text="Cancel" class="sapUiSmallMarginEnd" press="onCancel"/>
+                <Button text="Create" type="Emphasized" press="onCreate"/>
+            </HBox>
+
+        </content>
+
+    </Page>
+</mvc:View>

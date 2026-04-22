@@ -1,0 +1,10 @@
+<mvc:View controllerName="com.inflexion.businesspartner.bpcreate.controller.App"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <App id="app">
+        <pages>
+            <mvc:XMLView viewName="com.inflexion.businesspartner.bpcreate.view.ManageBusinessPartner"/>
+        </pages>
+    </App>
+</mvc:View>

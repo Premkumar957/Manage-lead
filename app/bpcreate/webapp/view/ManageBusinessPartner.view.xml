@@ -1,0 +1,135 @@
+<mvc:View
+    controllerName="com.inflexion.businesspartner.bpcreate.controller.ManageBusinessPartner"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:plugins="sap.m.plugins"
+    xmlns:core="sap.ui.core">
+
+    <f:DynamicPage>
+
+        <!-- TITLE -->
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Manage Business Partners"/>
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <!-- FILTER BAR -->
+        <f:header>
+            <f:DynamicPageHeader>
+
+                <fb:FilterBar
+                    id="filterBar"
+                    showFilterConfiguration="true"
+                    showGoOnFB="true"
+                    showClearOnFB="true"
+                    search="onSearch">
+
+                    <fb:filterItems>
+
+                        <!-- DEFAULT VISIBLE -->
+
+                        <fb:FilterGroupItem name="BusinessPartnerFullName" label="Full Name" visibleInFilterBar="true">
+                            <fb:control>
+                                <Input value="{filterModel>/BusinessPartnerFullName}" />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <fb:FilterGroupItem name="BusinessPartnerIsBlocked" label="Blocked" visibleInFilterBar="true">
+                            <fb:control>
+                                <Select selectedKey="{filterModel>/BusinessPartnerIsBlocked}">
+                                    <items>
+                                        <core:Item key="" text="All"/>
+                                        <core:Item key="true" text="Blocked"/>
+                                        <core:Item key="false" text="Not Blocked"/>
+                                    </items>
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <fb:FilterGroupItem name="BusinessPartnerCategory" label="Category" visibleInFilterBar="true">
+                            <fb:control>
+                                <Input value="{filterModel>/BusinessPartnerCategory}" />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <fb:FilterGroupItem name="BusinessPartnerGrouping" label="Grouping" visibleInFilterBar="true">
+                            <fb:control>
+                                <Input value="{filterModel>/BusinessPartnerGrouping}" />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <!-- OPTIONAL -->
+
+                        <fb:FilterGroupItem name="BusinessPartner" label="Business Partner" visibleInFilterBar="false">
+                            <fb:control>
+                                <Input value="{filterModel>/BusinessPartner}" />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <fb:FilterGroupItem name="FirstName" label="First Name" visibleInFilterBar="false">
+                            <fb:control>
+                                <Input value="{filterModel>/FirstName}" />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                    </fb:filterItems>
+                </fb:FilterBar>
+
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <!-- TABLE -->
+        <f:content>
+
+            <Table id="bpTable" items="{/BusinessPartners}" growing="true" growingThreshold="50">
+
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <content>
+                            <Label design="Bold" text="Business Partners ({countModel>/count})" />
+                            <ToolbarSpacer />
+                            <Button text="{i18n>poh_Create}" press="onCreatePress"/>
+                            <ToolbarSeparator />
+                            <Button id="btn_export" type="Transparent" icon="sap-icon://excel-attachment" tooltip="Excel" press="onPressExport"/>
+                            <Button type="Transparent" press="onPressRefresh" icon="sap-icon://reset" tooltip="Reset" enabled="true" />
+                            <Button type="Transparent" press="handleSortButtonPressed" icon="sap-icon://sort" tooltip="Sort" enabled="true" />
+                            <Button type="Transparent" press="handlePersoButtonPressed" icon="sap-icon://action-settings" tooltip="Personalization" enabled="true" />
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+
+                <dependents>
+                    <plugins:ColumnResizer columnResize="onColumnResize"/>
+                </dependents>
+
+                <columns>
+                    <Column><Text text="BusinessPartner"/></Column>
+                    <Column><Text text="BusinessPartnerFullName"/></Column>
+                    <Column><Text text="BusinessPartnerCategory"/></Column>
+                    <Column><Text text="BusinessPartnerGrouping"/></Column>
+                    <Column><Text text="BusinessPartnerIsBlocked"/></Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem vAlign="Middle" type="Navigation" press=".onListItemPress">
+                        <cells>
+                            <ObjectIdentifier title="{BusinessPartner}"/>
+                            <Text text="{BusinessPartnerFullName}"/>
+                            <Text text="{BusinessPartnerCategory}"/>
+                            <Text text="{BusinessPartnerGrouping}"/>
+                            <Text text="{BusinessPartnerIsBlocked}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+
+            </Table>
+
+        </f:content>
+
+    </f:DynamicPage>
+</mvc:View>

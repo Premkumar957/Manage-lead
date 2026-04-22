@@ -6,3 +6,5 @@ using from './salesoffer/annotations';
 using from './activities/annotations';
 
 using from './businesspartners/annotations';
+
+using from './bpcreate/annotations';

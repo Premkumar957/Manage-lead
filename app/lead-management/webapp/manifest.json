@@ -49,6 +49,9 @@
         "sap.ui.controllerExtensions": {
           "sap.fe.templates.ListReport.ListReportController": {
             "controllerName": "com.mycompany.leads.leadmanagement.ext.controller.ListReportExt"
+          },
+          "sap.fe.templates.ObjectPage.ObjectPageController": {
+            "controllerName": "com.mycompany.leads.leadmanagement.ext.controller.ObjectPageExt"
           }
         }
       }
@@ -167,6 +170,15 @@
                   "tableSettings": {
                     "creationMode": {
                       "name": "Inline"
+                    }
+                  },
+                  "actions": {
+                    "open": {
+                      "press": ".extension.com.mycompany.leads.leadmanagement.ext.controller.ObjectPageExt.onOpenDialog",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Open"
                     }
                   }
                 },

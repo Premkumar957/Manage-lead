@@ -16,6 +16,8 @@ import com.fasterxml.jackson.databind.*;
 import com.sap.cds.ResultBuilder;
 import com.sap.cds.ql.cqn.CqnAnalyzer;
 import com.sap.cds.reflect.CdsModel;
+import com.sap.cds.reflect.CdsService;
+import com.sap.cds.services.cds.CdsCreateEventContext;
 import com.sap.cds.services.cds.CdsDeleteEventContext;
 import com.sap.cds.services.cds.CdsReadEventContext;
 import com.sap.cds.services.handler.EventHandler;
@@ -241,6 +243,111 @@ public class ExternalServiceHandler implements EventHandler {
             context.setCompleted(); // Successfully deleted in S/4HANA
         } else {
             throw new RuntimeException("S/4 Delete Failed (" + deleteResponse.statusCode() + "): " + deleteResponse.body());
+        }
+    }
+
+
+    @On(event = "CREATE", entity = "ExternalService.BusinessPartners")
+    public void onCreateBusinessPartner(CdsCreateEventContext ctx) {
+
+        try {
+            // ✅ GET DATA
+            Map<String, Object> data = ctx.getCqn().entries().get(0);
+
+            String category  = trim((String) data.get("BusinessPartnerCategory"));
+            String grouping  = trim((String) data.get("BusinessPartnerGrouping"));
+            String firstName = trim((String) data.get("FirstName"));
+            String lastName  = trim((String) data.get("LastName"));
+            String orgName   = trim((String) data.get("OrganizationBPName1"));
+            String groupName = trim((String) data.get("GroupBusinessPartnerName1"));
+            String language  = trim((String) data.get("CorrespondenceLanguage"));
+
+            // ✅ SAFE Boolean handling
+            Boolean bpIsBlocked = (Boolean) data.get("BusinessPartnerIsBlocked");
+            Boolean isMarked    = (Boolean) data.get("IsMarkedForArchiving");
+
+            String authHeader = getAuthHeader();
+
+            CookieManager cookieManager = new CookieManager();
+            HttpClient client = HttpClient.newBuilder()
+                    .cookieHandler(cookieManager)
+                    .build();
+
+            // ✅ CSRF TOKEN
+            HttpRequest tokenRequest = HttpRequest.newBuilder()
+                    .uri(URI.create(BASE_URL + "/A_BusinessPartner?$top=1"))
+                    .header("Authorization", authHeader)
+                    .header("x-csrf-token", "fetch")
+                    .GET()
+                    .build();
+
+            HttpResponse<String> tokenResponse =
+                    client.send(tokenRequest, HttpResponse.BodyHandlers.ofString());
+
+            String csrfToken = tokenResponse.headers()
+                    .firstValue("x-csrf-token")
+                    .orElseThrow(() -> new RuntimeException("CSRF token fetch failed"));
+
+            // ✅ BP ID (for external grouping)
+            String bpId = String.valueOf(System.currentTimeMillis()).substring(5);
+
+            // ✅ PAYLOAD
+            Map<String, Object> payload = new LinkedHashMap<>();
+            payload.put("BusinessPartnerCategory", category);
+            payload.put("BusinessPartnerGrouping", grouping);
+            payload.put("CorrespondenceLanguage", language);
+            payload.put("BusinessPartner", bpId);
+
+            if ("1".equals(category)) {
+                payload.put("FirstName", firstName);
+                payload.put("LastName", lastName);
+            } else if ("2".equals(category)) {
+                payload.put("OrganizationBPName1", orgName);
+            } else if ("3".equals(category)) {
+                payload.put("GroupBusinessPartnerName1", groupName);
+            }
+
+            // ✅ Only include if present
+            if (bpIsBlocked != null) {
+                payload.put("BusinessPartnerIsBlocked", bpIsBlocked);
+            }
+
+            if (isMarked != null) {
+                payload.put("IsMarkedForArchiving", isMarked);
+            }
+
+            String jsonPayload = mapper.writeValueAsString(payload);
+
+            // ✅ POST
+            HttpRequest postRequest = HttpRequest.newBuilder()
+                    .uri(URI.create(BASE_URL + "/A_BusinessPartner"))
+                    .header("Authorization", authHeader)
+                    .header("Content-Type", "application/json")
+                    .header("Accept", "application/json")
+                    .header("x-csrf-token", csrfToken)
+                    .POST(HttpRequest.BodyPublishers.ofString(jsonPayload))
+                    .build();
+
+            HttpResponse<String> postResponse =
+                    client.send(postRequest, HttpResponse.BodyHandlers.ofString());
+
+            String body = postResponse.body();
+
+            // 🔥 IMPORTANT: Check actual success (NOT severity)
+            if (body.contains("PartnerID")) {
+
+                // ✅ Parse real response
+                Map<String, Object> responseMap =
+                        mapper.readValue(body, Map.class);
+
+                ctx.setResult(Collections.singletonList(responseMap));
+
+            } else {
+                throw new RuntimeException("S/4 Error: " + body);
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException("Create failed: " + e.getMessage(), e);
         }
     }
 
