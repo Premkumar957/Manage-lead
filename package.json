@@ -17,7 +17,9 @@
     "app/activities",
     "app/customers",
     "app/customers",
-    "app/businesspartners"
+    "app/businesspartners",
+    "app/products",
+    "app/employees"
   ],
   "scripts": {
     "undeploy": "cf undeploy manage-lead --delete-services --delete-service-keys --delete-service-brokers",

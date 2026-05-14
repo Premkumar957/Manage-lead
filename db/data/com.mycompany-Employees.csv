@@ -1,0 +1,11 @@
+ID,firstName,lastName,email,department,phoneNumber,salary,createdAt,createdBy
+7f2a1b3c-4d5e-6f7a-8b9c-0d1e2f3a4b5c,Arun,Kumar,arun.kumar@mycompany.com,Engineering,9876543210,75000.00,2024-01-01T10:00:00Z,admin
+a3b4c5d6-e7f8-9a0b-1c2d-3e4f5g6h7i8j,Priya,Sharma,priya.sharma@mycompany.com,HR,8765432109,62000.50,2024-01-02T11:30:00Z,admin
+b1c2d3e4-f5g6-h7i8-j9k0-l1m2n3o4p5q6,Vikram,Singh,vikram.singh@mycompany.com,Finance,7654321098,85000.00,2024-01-05T09:15:00Z,admin
+c2d3e4f5-g6h7-i8j9-k0l1-m2n3o4p5q6r7,Ananya,Iyer,ananya.iyer@mycompany.com,Marketing,6543210987,58000.75,2024-01-10T14:20:00Z,admin
+d3e4f5g6-h7i8-j9k0-l1m2-n3o4p5q6r7s8,Suresh,Raina,suresh.raina@mycompany.com,Engineering,9988776655,72000.00,2024-01-12T16:45:00Z,admin
+e4f5g6h7-i8j9-k0l1-m2n3-o4p5q6r7s8t9,Deepika,P,deepika.p@mycompany.com,Sales,9123456789,69000.25,2024-01-15T08:00:00Z,admin
+f5g6h7i8-j9k0-l1m2-n3o4-p5q6r7s8t9u0,Rahul,Dravid,rahul.d@mycompany.com,Operations,9234567890,80000.00,2024-01-18T12:10:00Z,admin
+g6h7i8j9-k0l1-m2n3-o4p5-q6r7s8t9u0v1,Sneha,Reddy,sneha.r@mycompany.com,IT Support,9345678901,54000.00,2024-01-20T10:30:00Z,admin
+h7i8j9k0-l1m2-n3o4-p5q6-r7s8t9u0v1w2,Amit,Shah,amit.shah@mycompany.com,Finance,9456789012,92000.50,2024-01-22T15:00:00Z,admin
+i8j9k0l1-m2n3-o4p5-q6r7-s8t9u0v1w2x3,Kavita,K,kavita.k@mycompany.com,Marketing,9567890123,61000.00,2024-01-25T11:15:00Z,admin

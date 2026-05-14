@@ -8,3 +8,7 @@ using from './activities/annotations';
 using from './businesspartners/annotations';
 
 using from './bpcreate/annotations';
+
+using from './products/annotations';
+
+using from './employees/annotations';

@@ -1,4 +1,4 @@
-code,name
-Planned,
-Completed,
-Cancelled,
+code,name,criticality
+Planned,Planned,2
+Completed,Completed,3
+Cancelled,Cancelled,1

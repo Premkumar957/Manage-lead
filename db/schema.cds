@@ -74,7 +74,9 @@ entity LeadActivities : cuid, managed {
     subject      : String(200)    @mandatory @title: 'Subject';
     scheduledAt  : DateTime       @title: 'Scheduled At';
     completedAt  : DateTime       @title: 'Completed At';
-    status       : ActivityStatus @title: 'Status';
+    status_code  : String(20) @title : 'Status';
+    status       : Association to ActivityStatuses
+                    on status.code = status_code;
 }
 
 entity LeadContactPersons : cuid, managed {
@@ -139,8 +141,45 @@ entity ActivityTypes {
     key code : String;
     name     : String;
 }
-
 entity ActivityStatuses {
-    key code : String;
-    name     : String;
+    key code : String(20);
+    name     : String(50);
+    criticality : Integer; // for UI color
+}
+
+
+
+entity Products @(Common.SemanticKey: [ID]) : managed {
+    key ID        : String(10);
+
+    // Tree Structure
+    // Self-association each product can point to it's parent
+    // Root noeds  -> parent is null
+    parent        : Association to Products;
+
+    // Business Fields 
+    identifier    : String(20);
+    title         : String(100);
+    description   : String(500);
+
+    // Hierarchy computed fields
+    // it's not for cap data - just for runtime only
+
+    @Core.Computed: true 
+    LimitedDescendantCount  : Integer64;  // How many visible children/grandchildren this node has // → Shows as badge: "▼ P10 (4)"
+
+    @Core.Computed: true
+    DistanceFromRoot        : Integer64;  // 0 = root,  1 = first child , 2 = grandchild
+
+    @Core.Computed: true
+    DrillState              : String;  //  "expanded" = node is open (show ▼), "collapsed" = node has children but closed  (show ▶), "leaf" = no children at all (no toggle shown)
+
+    @Core.Computed: true
+    Matched                 : Boolean;    // → true if THIS row matches the active search text
+
+    @Core.Computed: true
+    MatchedDescendantCount  : Integer64;  // How many childre/ grandchildren match the search,  Even if parent doesn't match, it stays visible
+
+
+
 }
